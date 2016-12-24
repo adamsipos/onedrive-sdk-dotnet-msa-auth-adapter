@@ -35,7 +35,7 @@ namespace Microsoft.OneDrive.Sdk.Authentication
         public void AddCredentialCacheToVault(CredentialCache credentialCache)
         {
             this.DeleteStoredCredentialCache();
-            
+
             var cacheBlob = this.protectedData.Protect(credentialCache.GetCacheBlob());
             using (var outStream = fileSystem.OpenWrite(this.GetVaultFilePath()))
             {
@@ -74,9 +74,6 @@ namespace Microsoft.OneDrive.Sdk.Authentication
             return Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), this.VaultFileName);
         }
 
-        /// <summary>
-        /// Extracted file handling interface to enable in-memory filesystem in unit test
-        /// </summary>
         public interface IFile
         {
             Stream OpenWrite(string path);
