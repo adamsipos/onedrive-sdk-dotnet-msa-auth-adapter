@@ -84,6 +84,22 @@ namespace Microsoft.OneDrive.Sdk.Authentication
             string clientSecret,
             string returnUrl,
             string[] scopes,
+            CredentialCache credentialCache,
+            ICredentialVault credentialVault,
+            IWebAuthenticationUi webAuthenticationUi)
+            : this(clientId, clientSecret, returnUrl, scopes, credentialCache, credentialVault)
+        {
+            this.webAuthenticationUi = webAuthenticationUi;
+        }
+
+        /// <summary>
+        /// Constructs an <see cref="MsaAuthenticationProvider"/>.
+        /// </summary>
+        public MsaAuthenticationProvider(
+            string clientId,
+            string clientSecret,
+            string returnUrl,
+            string[] scopes,
             CredentialCache credentialCache)
         {
             this.clientId = clientId;
@@ -93,7 +109,7 @@ namespace Microsoft.OneDrive.Sdk.Authentication
 
             this.CredentialCache = credentialCache ?? new CredentialCache();
             this.oAuthHelper = new OAuthHelper();
-            this.webAuthenticationUi = new FormsWebAuthenticationUi();
+            this.webAuthenticationUi = this.webAuthenticationUi ?? new FormsWebAuthenticationUi();
         }
 
 #elif WINSTORE

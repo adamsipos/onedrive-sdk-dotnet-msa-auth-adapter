@@ -47,9 +47,9 @@ namespace Test.OneDrive.Sdk.Authentication.Desktop
                 MsaAuthenticationProviderTests.ClientSecret,
                 MsaAuthenticationProviderTests.ReturnUrl,
                 this.scopes,
-                this.credentialCache.Object);
-
-            this.authenticationProvider.webAuthenticationUi = this.webAuthenticationUi.Object;
+                this.credentialCache.Object,
+                null,
+                this.webAuthenticationUi.Object);
         }
 
         [TestCleanup]
