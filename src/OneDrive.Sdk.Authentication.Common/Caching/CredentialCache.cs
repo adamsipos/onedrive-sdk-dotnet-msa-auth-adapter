@@ -244,7 +244,7 @@ namespace Microsoft.OneDrive.Sdk.Authentication
         /// <returns>Most recently used result. Null if no cache value is stored
         /// as most recently used (could be that most-recently used value was deleted).
         /// </returns>
-        internal virtual AccountSession GetMostRecentlyUsedResultFromCache()
+        public virtual AccountSession GetMostRecentlyUsedResultFromCache()
         {
             var cacheNotificationArgs = new CredentialCacheNotificationArgs { CredentialCache = this };
             this.OnBeforeAccess(cacheNotificationArgs);
